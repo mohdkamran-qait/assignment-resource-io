@@ -8,7 +8,15 @@ import java.io.*;
  *
  * @author Ramandeep RamandeepSingh AT QAInfoTech.com
  */
+
 public class PropertiesOptionsIO {
+
+	/**
+	 * 
+	 * @param optionKey
+	 * @return optionvalue
+	 * @throws IOException
+	 */
 
 	public Object getOptionValue(String optionKey) throws IOException {
 		// throw new UnsupportedOperationException("Not implemented.");
@@ -16,9 +24,7 @@ public class PropertiesOptionsIO {
 		Object optionvalue = null;
 
 		try {
-			InputStream input = new FileInputStream(
-					"C:\\Users\\mohdkamran\\Documents\\assignment-resource-io-master\\src\\main\\resources\\options.properties");
-
+			InputStream input = new FileInputStream("src/main/resources/options.properties");
 			Properties option = new Properties();
 
 			// loading the properties file
@@ -35,14 +41,18 @@ public class PropertiesOptionsIO {
 		return optionvalue;
 	}
 
+	/**
+	 * 
+	 * @param optionKey
+	 * @param optionValue
+	 * @throws IOException
+	 */
+
 	public void addOption(String optionKey, Object optionValue) throws IOException {
-		// throw new UnsupportedOperationException("Not implemented.");
-		File file;
-		InputStream input = null;
-		FileOutputStream output = null;
-		file = new File(
-				"C:\\Users\\mohdkamran\\Documents\\assignment-resource-io-master\\src\\main\\resources\\options.properties");
+
 		Properties option = new Properties();
+		FileOutputStream output = null;
+		File file;
 
 		String optionKey1 = "ResourceIOTest";
 		String optionValue1 = "";
@@ -53,25 +63,30 @@ public class PropertiesOptionsIO {
 		String optionKey3 = "TimeStamp";
 		String OptionValue3 = "";
 
-		String obj = null;
+		InputStream input = null;
 
 		try {
-			input = new FileInputStream(
-					"C:\\Users\\mohdkamran\\Documents\\assignment-resource-io-master\\src\\main\\resources\\options.properties");
+
+			file = new File("src/main/resources/options.properties");
+			input = new FileInputStream("src/main/resources/options.properties");
+
+			// loading resource file
 			option.load(input);
 
+			// getting the property value
 			output = new FileOutputStream(file);
 
-			option.load(new FileInputStream(
-					"C:\\Users\\mohdkamran\\Documents\\assignment-resource-io-master\\src\\main\\resources\\options.properties"));
+			option.load(new FileInputStream("src/main/resources/options.properties"));
+			// setting the properties value
 
 			optionValue1 = option.getProperty(optionKey1);
 			optionValue2 = option.getProperty(optionKey2);
 
 			option.setProperty(optionKey1, optionValue1);
 			option.setProperty(optionKey2, optionValue2);
-			option.setProperty(optionKey3, optionValue.toString());
+			option.setProperty(optionKey, optionValue.toString());
 
+			// saving the properties
 			option.store(output, null);
 
 		} catch (IOException e) {
@@ -80,6 +95,5 @@ public class PropertiesOptionsIO {
 		} finally {
 			output.close();
 		}
-
 	}
 }
