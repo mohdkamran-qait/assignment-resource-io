@@ -24,11 +24,13 @@ public class PropertiesOptionsIO {
 		Object optionvalue = null;
 
 		try {
-			InputStream input = new FileInputStream("src/main/resources/options.properties");
-			Properties option = new Properties();
-
+			
+			Properties option = new Properties()
+			ClassLoader classLoader = getClass().getClassLoader();
+			java.net.URL resource = classLoader.getResource("options.properties");
+			
 			// loading the properties file
-			option.load(input);
+			option.load(new FileReader(new File(resource.getFile())));
 
 			// getting the option value from Property file
 			optionvalue = option.getProperty(optionKey);
