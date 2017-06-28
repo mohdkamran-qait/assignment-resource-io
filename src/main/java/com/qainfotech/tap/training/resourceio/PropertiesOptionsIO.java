@@ -61,7 +61,7 @@ public class PropertiesOptionsIO {
 		String optionValue2 = "";
 
 		String optionKey3 = "TimeStamp";
-		String OptionValue3 = "";
+		String optionValue3 = "";
 
 		InputStream input = null;
 
